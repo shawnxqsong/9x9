@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="9x9 puzzle for kids.">
+    <meta name="keywords" content="9x9, math, puzzle, 9x9 puzzle, educational games">
+    <meta name="author" content="shawnxqsong">
+    <title>9x9</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f0f;
+            color: #f0f0f0;
+            cursor: pointer;
+        }
+        span {
+            padding: 3vw;
+        }
+        #card {
+            padding-bottom: 10vh;
+            font-family: Verdana, sans-serif;
+            font-size: 25vw;
+        }
+        .no-select {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body onclick="flash()" onkeydown="flash()" class="no-select">
+    <div id="card"></div>
+    <script>
+        const colors = [
+            '#d55e00', // red
+            '#f0e442', // yellow
+            '#009e73', // green
+            '#0072b2', // blue
+            '#cc79a7', // purple
+        ]
+        function rand(max) {
+            // return an integer from 0 to max
+            return Math.floor(Math.random() * (max + 1));
+        }
+        function flash() {
+            var card = document.getElementById('card');
+            var x = document.createElement('span');
+            var a = document.createTextNode(`${rand(7) + 2}`)
+            var b = document.createTextNode(`${rand(7) + 2}`)
+            x.style.color = colors[rand(colors.length - 1)];
+            x.textContent = '×';
+            card.innerHTML = '';
+            card.appendChild(a);
+            card.appendChild(x);
+            card.appendChild(b);
+        }
+        flash();
+    </script>
+</body>
+</html>
